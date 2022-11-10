@@ -35,7 +35,7 @@ const App = () => {
     setColor(correctColor);
     setAnswers(
       [correctColor, RandomDigits(), RandomDigits()].sort(
-        () => 1 - Math.random()
+        () => 0.5 - Math.random()
       )
     );
   }, []);
@@ -46,6 +46,11 @@ const App = () => {
     } else {
       setSolution("Wrong!");
     }
+  };
+
+  const HandleRestart = () => {
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
   };
 
   return (
@@ -65,6 +70,13 @@ const App = () => {
             {answer}
           </button>
         ))}
+        <button
+          type="button"
+          className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-900 focus:ring-offset-2"
+          onClick={HandleRestart}
+        >
+          RESTART
+        </button>
       </div>
       <div className="flex self-center justify-center h-1/5">
         <h1
